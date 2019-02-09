@@ -24,5 +24,6 @@ class VBdObjectTypeEntityImplTest {
 
     @Test
     fun getRepository() {
+        Assert.assertNotNull(vBdObjectTypeEntityService)
     }
 }
