@@ -7,4 +7,7 @@ import java.math.BigDecimal
 
 interface VBdObjectTypeEntityRepository : JpaRepository<VBdObjectTypeEntity, BigDecimal> {
     fun findByCode(code: String): VBdObjectTypeEntity
+
+    fun findByCodeLike(code: String): List<VBdObjectTypeEntity>
+
 }

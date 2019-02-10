@@ -10,4 +10,6 @@ open class VBdObjectTypeEntityImpl(val repository: VBdObjectTypeEntityRepository
 
 
     override open fun findByCode(code: String) = repository.findByCode(code)
+
+    override fun findCodeLike(code: String) = repository.findByCodeLike(code)
 }
