@@ -15,7 +15,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableIntegration
 @EnablePublisher
 @IntegrationComponentScan
-@ImportResource("classpath:integration/ingration.xml")
+@ImportResource("classpath*:integration/integration.xml")
 public class IntegrationApplication {
 
     public static void main(String[] args) {

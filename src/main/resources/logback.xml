@@ -1,3 +1,4 @@
+<!--
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
@@ -7,7 +8,7 @@
     <logger name="org.apache" level="WARN"/>
 
 
-    <!--<logger name="org.springframework" level="INFO"/>-->
-    <logger name="ru.vood" level="WARN"/>
-    <!--<logger name="ru.vood" level="ERROR"/>-->
-</configuration>
+    &lt;!&ndash;<logger name="org.springframework" level="INFO"/>&ndash;&gt;
+    <logger name="ru.vood" level="debug"/>
+    &lt;!&ndash;<logger name="ru.vood" level="ERROR"/>&ndash;&gt;
+</configuration>-->
