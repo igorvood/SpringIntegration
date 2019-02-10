@@ -7,10 +7,10 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-    <channel id="requestChannel_1"/>
-    <channel id="requestChannel_2"/>
-    <channel id="requestChannel_3"/>
-    <channel id="requestChannel_4"/>
+    <channel id="requestChannel_1" datatype="java.lang.String"/>
+    <channel id="requestChannel_2" datatype="java.lang.String"/>
+    <channel id="requestChannel_3" datatype="java.lang.String"/>
+    <channel id="requestChannel_4" datatype="java.lang.String"/>
 
     <transformer input-channel="requestChannel_1"
                  output-channel="requestChannel_2"
