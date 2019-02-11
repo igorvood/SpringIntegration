@@ -8,13 +8,18 @@ import java.text.MessageFormat
 open class TransformerOne(/*var vBdObjectTypeEntityService: VBdObjectTypeEntityService*/) {
 
     fun transform(code: String, @Headers headerMap: Map<String, Object>): String {
-        for (key in headerMap.keys) {
-            val value = headerMap[key]
-            if (key !== "sequenceSize" && key !== "timestamp")
-                print(MessageFormat.format("{0} : {1}. ", key, value))
-        }
-        println()
-        println("${Thread.currentThread().name} ${this::class.java.name} -> Transform value $code")
+        println("${Thread.currentThread().name} ${this::class.java.name} -> Transform value $code headerMap-> ${transformHeaderMap(headerMap)} ")
         return "%${code.toUpperCase()}%"
     }
+
+}
+
+fun transformHeaderMap(headerMap: Map<String, Object>): String {
+    var s: String = ""
+    for (key in headerMap.keys) {
+        val value = headerMap[key]
+        if (key !== "sequenceSize" && key !== "timestamp")
+            s += MessageFormat.format("{0} : {1}. ", key, value)
+    }
+    return s
 }
