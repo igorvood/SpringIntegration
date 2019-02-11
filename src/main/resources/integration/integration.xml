@@ -3,16 +3,19 @@
              xmlns:beans="http://www.springframework.org/schema/beans"
              xmlns:int="http://www.springframework.org/schema/integration"
              xmlns="http://www.springframework.org/schema/integration"
+             xmlns:task="http://www.springframework.org/schema/task"
              xsi:schemaLocation="http://www.springframework.org/schema/integration
              http://www.springframework.org/schema/integration/spring-integration.xsd
 
 		http://www.springframework.org/schema/beans
-		http://www.springframework.org/schema/beans/spring-beans.xsd">
+		http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
 
     <int:channel id="requestChannel_1" datatype="java.lang.String"/>
     <int:channel id="requestChannel_2" datatype="java.lang.String"/>
-    <int:channel id="requestChannel_3" datatype="java.lang.String"/>
+    <int:channel id="requestChannel_3" datatype="java.lang.String">
+        <int:dispatcher task-executor="exec"/>
+    </int:channel>
     <int:channel id="requestChannel_4" datatype="java.lang.String"/>
     <int:channel id="requestChannel_5">
         <int:queue/>
@@ -30,6 +33,8 @@
                   ref="splitterOne"
                   method="split"
                   apply-sequence="true"/>
+
+    <task:executor id="exec" pool-size="10"/>
 
     <int:transformer input-channel="requestChannel_3"
                      output-channel="requestChannel_4"
