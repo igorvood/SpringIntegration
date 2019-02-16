@@ -22,15 +22,4 @@ public class IntegrationApplication {
         SpringApplication.run(IntegrationApplication.class, args);
     }
 
-/*
-    @Bean
-    public CommandLineRunner commandLineRunner(ApplicationContext context) {
-        return args -> {
-            MessageChannel channel = context.getBean("requestChannel_1", MessageChannel.class);
-            System.out.println("Sending orders to input channel");
-            channel.send(MessageBuilder.withPayload("t").build());
-        };
-    }
-*/
 }
-

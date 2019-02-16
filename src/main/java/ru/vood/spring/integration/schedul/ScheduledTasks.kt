@@ -12,13 +12,19 @@ import org.springframework.stereotype.Component
 @Component
 class ScheduledTasks(@Autowired
                      @Qualifier("requestChannel_1")
-                     var chanel: MessageChannel) {
+                     var chanel: MessageChannel,
+                     @Autowired
+                     @Qualifier("requestChannel")
+                     var chanelSecond: MessageChannel
+) {
 
     private val log = LoggerFactory.getLogger(ScheduledTasks::class.java)
 
     @Scheduled(fixedRate = 5000)
     fun reportCurrentTime() {
         log.info("Sending orders to input channel")
-        chanel.send(MessageBuilder.withPayload("t").build())
+        //chanel.send(MessageBuilder.withPayload("ta").build())
+
+        chanelSecond.send(MessageBuilder.withPayload("t").build())
     }
 }

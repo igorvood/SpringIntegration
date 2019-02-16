@@ -47,6 +47,15 @@
 
     />
 
+    <!--<int:poller id="poller"/>-->
+
+
+    <!--
+        <int:service-activator id="serviceActivator" input-channel="requestChannel_5" ref="serviceActivatorOne" method="activate">
+            <int:poller />
+        </int:service-activator>
+    -->
+
 
     <!--expression="payload.split('\s')"-->
 
