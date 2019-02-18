@@ -38,6 +38,18 @@ open class ConfigurationFlowByDsl(@Autowired
         return ExecutorChannel(executor())
     }
 
+    fun upcase(): IntegrationFlow {
+        return IntegrationFlow { f ->
+            f.channel(requestChannel())
+                    .transform(transformerOne, "transform")
+                    .split(splitterOne)
+                    .channel(requestChannelExecutor())
+                    .transform(transformerTwo)
+                    .log()
+        }
+    }
+
+
     @Bean
     open fun dslFlow(): IntegrationFlow {
         return IntegrationFlows.from(requestChannel())
