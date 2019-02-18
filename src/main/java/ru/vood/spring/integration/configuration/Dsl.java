@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.dsl.IntegrationFlowDefinition;
-import org.springframework.integration.transformer.GenericTransformer;
 import ru.vood.spring.integration.transformer.TransformerOne;
 
 @Configuration
@@ -16,19 +15,12 @@ public class Dsl {
 
     @Bean
     public IntegrationFlow upcase() {
-        return new IntegrationFlow() {
-            @Override
-            public void configure(IntegrationFlowDefinition<?> f) {
-                f.transform(new GenericTransformer<String, String>() {
-                    @Override
-                    public String transform(String source) {
-                        return null;
-                    }
-                })
-                        .split()                                         // 1
-                        .<String, String>transform(String::toUpperCase)  // 2
-                        .aggregate();
-            }
+        return f -> {
+            IntegrationFlowDefinition<?> transform = f.transform(transformerOne);
+            IntegrationFlowDefinition<?> split = transform.split();
+            split                                         // 1
+                    .<String, String>transform(String::toUpperCase)  // 2
+                    .aggregate();
         };                                    // 3
     }
 }
